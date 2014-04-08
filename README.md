@@ -8,6 +8,8 @@ Text editor to teaching programming language with "placeholder" feature.
 Running
 -------
 
-`$ node server.js`
-`$ qmlviewer TeacherEditor.qml`
-`$ qmlviewer StudentEditor.qml`
+```
+$ node server.js
+$ qmlviewer TeacherEditor.qml
+$ qmlviewer StudentEditor.qml
+```
