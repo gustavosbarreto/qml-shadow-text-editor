@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile("qrc:/main.qml");
     viewer.showExpanded();
+	viewer.setWindowTitle("Editor do Aluno");
 
 	return app.exec();
 }

@@ -83,6 +83,7 @@ int main(int argc, char *argv[])
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile("qrc:/main.qml");
     viewer.showExpanded();
+	viewer.setWindowTitle("Editor do Professor - " + session->name);
 	
 	QHttpServer *server = new QHttpServer;
 	QObject::connect(server, SIGNAL(newRequest(QHttpRequest *, QHttpResponse *)),
