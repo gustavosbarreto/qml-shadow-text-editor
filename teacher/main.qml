@@ -1,8 +1,8 @@
 import QtQuick 1.1
 
 Rectangle {
-    width: 360
-    height: 360
+    width: 640
+    height: 480
 
     color: "black"
 
@@ -22,7 +22,7 @@ Rectangle {
 
         onTriggered: {
             var request = new XMLHttpRequest();
-            request.open("POST", "http://localhost:8080/");
+            request.open("POST", "http://localhost:1995/");
             request.send(editor.text);
         }
     }
