@@ -44,7 +44,9 @@ public Q_SLOTS:
 	
 	void readBody()
 	{
-		text = ((QHttpRequest *)QObject::sender())->body();		
+        QHttpRequest *req = (QHttpRequest *)QObject::sender();
+        if (req->successful())
+            text = req->body();
 	}
 	
 	void processPendingDatagrams()
