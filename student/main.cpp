@@ -3,6 +3,7 @@
 #include <QInputDialog>
 #include <QUdpSocket>
 #include <QDebug>
+#include <QHostInfo>
 
 #include "qmlapplicationviewer.h"
 
@@ -15,7 +16,7 @@ public:
 	{
 		udp = new QUdpSocket(this);
         udp->bind(1983, QUdpSocket::ShareAddress);
-		
+
 		connect(udp, SIGNAL(readyRead()), SLOT(processPendingDatagrams()));
 	}
 
@@ -37,10 +38,10 @@ public Q_SLOTS:
 		    datagram.resize(udp->pendingDatagramSize());
 		    udp->readDatagram(datagram.data(), datagram.size(), &sender, &senderPort);
 
-			emit newSession(QString::fromUtf8(datagram), sender.toString());
+			emit newSession(QString::fromUtf8(datagram), QHostAddress(sender.toIPv4Address()).toString());
 		}
 	}
-	
+
 signals:
 	void newSession(const QString &name, const QString &address);
 
@@ -53,7 +54,7 @@ int main(int argc, char *argv[])
 	QApplication app(argc, argv);
 
 	SessionDiscover *session = new SessionDiscover;
-	
+
     QmlApplicationViewer viewer;
 	viewer.rootContext()->setContextProperty("session", session);
     viewer.addImportPath(QLatin1String("modules"));
